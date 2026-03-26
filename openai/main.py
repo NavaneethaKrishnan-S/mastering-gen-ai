@@ -10,7 +10,10 @@ client = OpenAI(
 )
 
 response = client.responses.create(
-    input="Hi there! Naveen here!",
+    input=[
+        {"role": "system", "content":"You are expert in Maths. So answer only related maths. Say sorry for any unrelated questions."},
+        {"role": "user", "content":"What is my name?"}
+        ],
     model="openai/gpt-oss-20b",
 )
 print(response.output_text)
